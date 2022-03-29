@@ -1,10 +1,17 @@
 Package: censusviz
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Framework to Visualize Historical Census Data
+Version: 0.0.0.9001
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Rose", "Porta", , "rporta@smith.edu", role = c("aut", "cre"))
+    person("Irene", "Foster", , "ifoster25@smith.edu", role = c("aut", "cre"))
+    person("Catherine", "Park", , "cpark65@smith.edu", role = c("aut", "cre"))
+Description: The censusviz package facilitate the process of analyzing and visualizing historical census data through 
+    3 primary features: (1) converting historical demographic data from IPUMS into an accessible format for analysis 
+    and joining it with geospatial census tract data so that it is easy to visualize on a map, (2) visualize the distribution 
+    of demographic data by census tract for a specified region and year on a leaflet map, and (3) create a simple shiny app that 
+    allows users to interactively explore changes over time in demographics through leaflet maps and data tables. These three 
+    elements will build off of each other such that the user can either simply access the data that they want and perform their own 
+    analysis, or they can use the functionality of the package to visualize it spatially using individual maps or a shiny app.
 License: MIT + file LICENSE
 Suggests: 
     testthat (>= 3.0.0)
