@@ -1,0 +1,106 @@
+year,variable,census_label,race_label,is_hispanic
+2010,"H7Z003","Not Hispanic or Latino: White alone","White",FALSE
+2010,"H7Z004","Not Hispanic or Latino: Black or African American alone","Black",FALSE
+2010,"H7Z005","Not Hispanic or Latino: American Indian and Alaska Native alone","Native American",FALSE
+2010,"H7Z006","Not Hispanic or Latino: Asian alone","Asian",FALSE
+2010,"H7Z007","Not Hispanic or Latino: Native Hawaiian and Other Pacific Islander alone","Pacific Islander",FALSE
+2010,"H7Z008","Not Hispanic or Latino: Some Other Race alone","Other",FALSE
+2010,"H7Z009","Not Hispanic or Latino: Two or More Races","Other",FALSE
+2010,"H7Z011","Hispanic or Latino: White alone","White",TRUE
+2010,"H7Z012","Hispanic or Latino: Black or African American alone","Black",TRUE
+2010,"H7Z013","Hispanic or Latino: American Indian and Alaska Native alone","Native American",TRUE
+2010,"H7Z014","Hispanic or Latino: Asian alone","Asian",TRUE
+2010,"H7Z015","Hispanic or Latino: Native Hawaiian and Other Pacific Islander alone","Pacific Islander",TRUE
+2010,"H7Z016","Hispanic or Latino: Some Other Race alone","Other",TRUE
+2010,"H7Z017","Hispanic or Latino: Two or More Races","Other",TRUE
+1980,"DFB001","White","White",FALSE
+1980,"DFB002","Black","Black",FALSE
+1980,"DFB003","American Indian, Eskimo and Aleut: American Indian","Native American",FALSE
+1980,"DFB004","American Indian, Eskimo and Aleut: Eskimo","Native American",FALSE
+1980,"DFB005","American Indian, Eskimo and Aleut: Aleut","Native American",FALSE
+1980,"DFB006","Asian and Pacific Islander: Japanese","Asian",FALSE
+1980,"DFB007","Asian and Pacific Islander: Chinese","Asian",FALSE
+1980,"DFB008","Asian and Pacific Islander: Filipino","Asian",FALSE
+1980,"DFB009","Asian and Pacific Islander: Korean","Asian",FALSE
+1980,"DFB010","Asian and Pacific Islander: Asian Indian","Asian",FALSE
+1980,"DFB011","Asian and Pacific Islander: Vietnamese","Asian",FALSE
+1980,"DFB012","Asian and Pacific Islander: Hawaiian","Pacific Islander",FALSE
+1980,"DFB013","Asian and Pacific Islander: Guamanian","Pacific Islander",FALSE
+1980,"DFB014","Asian and Pacific Islander: Samoan","Pacific Islander",FALSE
+1980,"DFB015","Asian and Pacific Islander: Other","Asian",FALSE
+1980,"DFB016","Other (race N.E.C.): Spanish","Other",TRUE
+1980,"DFB017","Other (race N.E.C.): Not Spanish","Other",FALSE
+1980,"DFN001","Not of Spanish origin",NA,FALSE
+1980,"DFN002","Mexican",NA,TRUE
+1980,"DFN003","Puerto Rican",NA,TRUE
+1980,"DFN004","Cuban",NA,TRUE
+1980,"DFN005","Other Spanish: White, Black, American Indian, Eskimo, Aleut, and Asian and Pacific Islander",NA,TRUE
+1980,"DFN006","Other Spanish: Other (Race N.E.C.)",NA,TRUE
+1960,"B7B001","White","White",NA
+1960,"B7B002","Negro","Black",NA
+1960,"B7B003","Other races","Other",NA
+1970,"CEB001","Male >> White","White",NA
+1970,"CEB002","Male >> Negro","Black",NA
+1970,"CEB003","Male >> Indian","Asian",NA
+1970,"CEB004","Male >> Japanese","Asian",NA
+1970,"CEB005","Male >> Chinese","Asian",NA
+1970,"CEB006","Male >> Filipino","Pacific Islander",NA
+1970,"CEB007","Male >> Hawaiian","Pacific Islander",NA
+1970,"CEB008","Male >> Korean","Asian",NA
+1970,"CEB009","Male >> Other","Other",NA
+1970,"CEB010","Female >> White","White",NA
+1970,"CEB011","Female >> Negro","Black",NA
+1970,"CEB012","Female >> Indian","Asian",NA
+1970,"CEB013","Female >> Japanese","Asian",NA
+1970,"CEB014","Female >> Chinese","Asian",NA
+1970,"CEB015","Female >> Filipino","Pacific Islander",NA
+1970,"CEB016","Female >> Hawaiian","Pacific Islander",NA
+1970,"CEB017","Female >> Korean","Asian",NA
+1970,"CEB018","Female >> Other","Other",NA
+1990,"ET2001","Not of Hispanic origin >> White","White",FALSE
+1990,"ET2002","Not of Hispanic origin >> Black","Black",FALSE
+1990,"ET2003","Not of Hispanic origin >> American Indian, Eskimo, or Aleut","Native American",FALSE
+1990,"ET2004","Not of Hispanic origin >> Asian or Pacific Islander","Asian",FALSE
+1990,"ET2005","Not of Hispanic origin >> Other race","Other",FALSE
+1990,"ET2006","Hispanic origin >> White","White",TRUE
+1990,"ET2007","Hispanic origin >> Black","Black",TRUE
+1990,"ET2008","Hispanic origin >> American Indian, Eskimo, or Aleut","Native American",TRUE
+1990,"ET2009","Hispanic origin >> Asian or Pacific Islander","Asian",TRUE
+1990,"ET2010","Hispanic origin >> Other race","Other",TRUE
+2000,"FMS001","Not Hispanic or Latino >> White alone","White",FALSE
+2000,"FMS002","Not Hispanic or Latino >> Black or African American alone","Black",FALSE
+2000,"FMS003","Not Hispanic or Latino >> American Indian and Alaska Native alone","Native American",FALSE
+2000,"FMS004","Not Hispanic or Latino >> Asian alone","Asian",FALSE
+2000,"FMS005","Not Hispanic or Latino >> Native Hawaiian and Other Pacific Islander alone","Pacific Islander",FALSE
+2000,"FMS006","Not Hispanic or Latino >> Some other race alone","Other",FALSE
+2000,"FMS007","Not Hispanic or Latino >> Two or more races","Other",FALSE
+2000,"FMS008","Hispanic or Latino >> White alone","White",TRUE
+2000,"FMS009","Hispanic or Latino >> Black or African American alone","Black",TRUE
+2000,"FMS010","Hispanic or Latino >> American Indian and Alaska Native alone","Native American",TRUE
+2000,"FMS011","Hispanic or Latino >> Asian alone","Asian",TRUE
+2000,"FMS012","Hispanic or Latino >> Native Hawaiian and Other Pacific Islander alone","Pacific Islander",TRUE
+2000,"FMS013","Hispanic or Latino >> Some other race alone","Other",TRUE
+2000,"FMS014","Hispanic or Latino >> Two or more races","Other",TRUE
+2020,"U7C002","Hispanic or Latino","Other",TRUE
+2020,"U7C005","Not Hispanic or Latino: Population of one race: White alone","White",FALSE
+2020,"U7C006","Not Hispanic or Latino: Population of one race: Black or African American alone","Black",FALSE
+2020,"U7C007","Not Hispanic or Latino: Population of one race: American Indian and Alaska Native alone","Native American",FALSE
+2020,"U7C008","Not Hispanic or Latino: Population of one race: Asian alone","Asian",FALSE
+2020,"U7C009","Not Hispanic or Latino: Population of one race: Native Hawaiian and Other Pacific Islander alone","Pacific Islander",FALSE
+2020,"U7C010","Not Hispanic or Latino: Population of one race: Some Other Race alone","Other",FALSE
+2020,"U7C011","Not Hispanic or Latino: Population of two or more races","Other",FALSE
+1920,"BBL001","Native white native parent","White",NA
+1920,"BBL002","Native white foreign/mix parent","White",NA
+1920,"BBL003","foreign born white","White",NA
+1920,"BBL004","Negro","Black",NA
+1920,"BBL005","Other races","Other",NA
+1930,"BIQ001","White: Native white persons with native white","White","NA"
+1930,"BIQ002","White: Native white persons with foreign born or mixed parents","White","NA"
+1930,"BIQ003","White: Foreign born whites","White","NA"
+1930,"BIQ004","Negro","Black","NA"
+1930,"BIQ005","Other races","Other","NA"
+1940,"BUQ001","White","White",NA
+1940,"BUQ002","Nonwhite","Other",NA
+1950,"B0J001","White","White",NA
+1950,"B0J002","Negro","Black",NA
+1950,"B0J003","Other nonwhite","Other",NA
