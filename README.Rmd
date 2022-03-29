@@ -20,37 +20,28 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/censusviz)](https://CRAN.R-project.org/package=censusviz)
 <!-- badges: end -->
 
-The goal of censusviz is to ...
+The goal of censusviz is to:
+
+(1) converting historical demographic data from IPUMS into an accessible format for analysis and joining it with geospatial census tract data so that it is easy to visualize on a map, 
+
+(2) visualize the distribution of demographic data by census tract for a specified region and year on a leaflet map, 
+
+(3) create a simple shiny app that allows users to interactively explore changes over time in demographics through leaflet maps and data tables. 
 
 ## Installation
 
-You can install the development version of censusviz like so:
+`censusviz` is hosted on GitHub and can be installed by running the following function:
 
-``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+``` {r}
+remotes::install_github("rporta23/censusviz")
 ```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
 library(censusviz)
-## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+## Contributors
 
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+- [Irene Foster](https://github.com/i-m-foster)
+- [Catherine Park](https://github.com/CJParkNW)
+- [Rose Porta](https://github.com/rporta23)
