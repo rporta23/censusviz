@@ -32,7 +32,7 @@ The goal of censusviz is to:
 
 `censusviz` is hosted on GitHub and can be installed by running the following function:
 
-``` {r}
+``` {r, message = FALSE}
 remotes::install_github("rporta23/censusviz")
 ```
 
