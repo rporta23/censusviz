@@ -27,23 +27,23 @@ add_people <- function(lmap, year_id, people_data) {
     leaflet::removeShape(layerId = max_layerId) |> 
     leaflet::removeControl(layerId = "people")
   
-  if (nepm::last_census_year(year_id) > 0) { # puts dots on map if they exist
-    data <- people_data %>%
-      dplyr::filter(year == nepm::last_census_year(year_id)) |> 
-      dplyr::mutate(
-        popup = 
-          paste(
-            "This dot represents <strong>100 people</strong> 
-          whose race was identified as <strong>",
-            race_label,
-            "</strong> in the",
-            year,
-            "Census. These people were",
-            ifelse(is_hispanic, "", "<strong>not</strong>"),
-            "identified as Hispanic."
-          ),
-        layerId = paste0("people_", 1:nrow(.))
-      )
+  if (censusviz::last_census_year(year_id) > 0) { # puts dots on map if they exist
+    data <- people_data |> 
+      dplyr::filter(year == censusviz::last_census_year(year_id)) # |> 
+      # dplyr::mutate(
+      #   popup = 
+      #     paste(
+      #       "This dot represents <strong>100 people</strong> 
+      #     whose race was identified as <strong>",
+      #       race_label,
+      #       "</strong> in the",
+      #       year,
+      #       "Census. These people were",
+      #       ifelse(is_hispanic, "", "<strong>not</strong>"),
+      #       "identified as Hispanic."
+      #     ),
+      #   layerId = paste0("people_", 1:nrow(.))
+      # )
     
     pal <- colorPeople()
     
@@ -60,7 +60,7 @@ add_people <- function(lmap, year_id, people_data) {
         weight = 3,
         fillOpacity = 0.3,
         popup = ~popup
-      ) %>%
+      ) |> 
       leaflet::addLegend(
         data = data,
         layerId = "people",
@@ -88,25 +88,25 @@ add_people <- function(lmap, year_id, people_data) {
 add_tracts <- function(lmap, year_id, tract_data) {
   # year_id <- convert_year(year_id)
   # maximum number of tracts in any year
-  max_num_tracts <- max(purrr::map_int(tract_data$tract, nrow))
+  max_num_tracts <- max(purrr::map_int(tract_data$tract_data, nrow))
   # remove any existing tracts
-  lmap <- lmap %>%
+  lmap <- lmap |> 
     leaflet::removeShape(layerId = paste0("tract_", 1:max_num_tracts))
   
   if (last_census_year(year_id) > 0) {
     # add tracts for this Census year only
-    bg <- tract_data %>%
+    bg <- tract_data |> 
       dplyr::filter(year == last_census_year(year_id))
     
-    tract_shp <- bg %>%
-      dplyr::pull(tract) %>%
+    tract_shp <- bg |> 
+      dplyr::pull(tract_data) |> 
       purrr::pluck(1)
     ids <- paste0("tract_", 1:nrow(tract_shp))
     
-    tract_graphs <- bg %>%
-      dplyr::pull(tract_long) %>%
-      purrr::pluck(1) %>%
-      dplyr::pull(data) %>%
+    tract_graphs <- bg |> 
+      dplyr::pull(tract_long) |> 
+      purrr::pluck(1) |> 
+      dplyr::pull(data) |> 
       purrr::map(plot_demographics)
     
     lmap %>%

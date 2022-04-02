@@ -1,0 +1,24 @@
+---
+title: "censusviz_vignette"
+author: "Rose Porta"
+date: "4/2/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+data_wide <- get_data_wide("data-large", "New York", "Madison")
+```
+
+```{r}
+people <- create_dots(data_wide)
+```
+
+```{r}
+base_map() |> 
+  add_people(2000, people)
+```
+

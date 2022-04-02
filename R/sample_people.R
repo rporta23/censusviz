@@ -3,31 +3,31 @@
 sample_people <- function(data, var_id, num_people = 1000) {
   x <- data[[var_id]]
   cat(paste("\nSampling variable:", var_id))
-  data %>%
-    sf::st_sample(size = round(x / num_people), exact = TRUE, by_polygon = TRUE) %>%
-    sf::st_as_sf() %>%
-    mutate(variable = var_id)
+  data |> 
+    sf::st_sample(size = round(x / num_people), exact = TRUE, by_polygon = TRUE) |> 
+    sf::st_as_sf() |> 
+    dplyr::mutate(variable = var_id)
 }
 
 #' Helper function to create_dots
 #' @export
 sample_people_many <- function(data, num_people = 1000) {
-  vars <- census_var_map %>%
-    filter(!is.na(race_label)) %>%
-    pull(variable)
-  vars_sample <- intersect(names(data), vars)
-  map_dfr(vars_sample, sample_people, data = data, num_people = num_people)
+  vars <- censusviz::census_var_map |> 
+    dplyr::filter(!is.na(race_label)) |> 
+    dplyr::pull(variable)
+  vars_sample <- dplyr::intersect(names(data), vars)
+  purrr::map_dfr(vars_sample, sample_people, data = data, num_people = num_people)
 }
 
 #' Generate dataframe with locations of dots representing people on map
 #' @export
 create_dots <- function(data) {
-  data %>%
-    mutate(
-      people = map(tract_data, sample_people_many, num_people = 100)
-    ) %>%
-    select(year, people) %>%
-    unnest(cols = people) %>%
-    left_join(census_var_map, by = c("year", "variable")) %>%
+  data |> 
+    dplyr::mutate(
+      people = purrr::map(tract_data, sample_people_many, num_people = 100)
+    ) |> 
+    dplyr::select(year, people) |> 
+    tidyr::unnest(cols = people) |> 
+    dplyr::left_join(censusviz::census_var_map, by = c("year", "variable")) |> 
     sf::st_as_sf()
 }
