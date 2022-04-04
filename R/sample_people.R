@@ -1,3 +1,7 @@
+globalVariables(
+  c("variable", "tract_data", "people")
+)
+
 #' Helper function to create_dots
 #' @export
 sample_people <- function(data, var_id, num_people = 1000) {

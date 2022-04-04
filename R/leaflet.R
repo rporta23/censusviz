@@ -1,6 +1,9 @@
+globalVariables(
+  c("year", "tract", "race_label", "is_hispanic", ".")
+)
+
 #' Leaflet maps for Springfield
 #' @export
-
 # Creates base layers used by all maps
 base_map <- function() {
   leaflet::leaflet() |> 
@@ -20,30 +23,32 @@ base_map <- function() {
 #' add_people(add_people(base_map(), 1975), 2011)
 #' }
 add_people <- function(lmap, year_id, people_data) {
-  # year_id <- convert_year(year_id)
+  
   # hard-coded maximum points to remove!!
   max_layerId = paste0("people_", 1:2000)
   lmap <- lmap |> 
     leaflet::removeShape(layerId = max_layerId) |> 
     leaflet::removeControl(layerId = "people")
   
-  if (censusviz::last_census_year(year_id) > 0) { # puts dots on map if they exist
-    data <- people_data |> 
-      dplyr::filter(year == censusviz::last_census_year(year_id)) # |> 
-      # dplyr::mutate(
-      #   popup = 
-      #     paste(
-      #       "This dot represents <strong>100 people</strong> 
-      #     whose race was identified as <strong>",
-      #       race_label,
-      #       "</strong> in the",
-      #       year,
-      #       "Census. These people were",
-      #       ifelse(is_hispanic, "", "<strong>not</strong>"),
-      #       "identified as Hispanic."
-      #     ),
-      #   layerId = paste0("people_", 1:nrow(.))
-      # )
+  data <- people_data |>  
+    dplyr::filter(year == censusviz::last_census_year(year_id))
+  
+  if (nrow(data) > 0) { # puts dots on map if they exist
+    data <- data %>% 
+      dplyr::mutate(
+        popup =
+          paste(
+            "This dot represents <strong>100 people</strong>
+          whose race was identified as <strong>",
+            race_label,
+            "</strong> in the",
+            year,
+            "Census. These people were",
+            ifelse(is_hispanic, "", "<strong>not</strong>"),
+            "identified as Hispanic."
+          ),
+        layerId = paste0("people_", 1:nrow(.))
+      )
     
     pal <- colorPeople()
     
@@ -90,34 +95,27 @@ add_tracts <- function(lmap, year_id, tract_data) {
   # maximum number of tracts in any year
   max_num_tracts <- max(purrr::map_int(tract_data$tract_data, nrow))
   # remove any existing tracts
-  lmap <- lmap |> 
+  lmap <- lmap |>
     leaflet::removeShape(layerId = paste0("tract_", 1:max_num_tracts))
   
-  if (last_census_year(year_id) > 0) {
-    # add tracts for this Census year only
-    bg <- tract_data |> 
-      dplyr::filter(year == last_census_year(year_id))
+  bg <- tract_data |> 
+    dplyr::filter(year == last_census_year(year_id))
+  
+  if (nrow(bg) > 0) { # add tracts for this Census year only
     
     tract_shp <- bg |> 
       dplyr::pull(tract_data) |> 
       purrr::pluck(1)
     ids <- paste0("tract_", 1:nrow(tract_shp))
     
-    tract_graphs <- bg |> 
-      dplyr::pull(tract_long) |> 
-      purrr::pluck(1) |> 
-      dplyr::pull(data) |> 
-      purrr::map(plot_demographics)
-    
-    lmap %>%
+    lmap <- lmap |>
       leaflet::addPolygons(
         data = tract_shp, 
         layerId = ids,
         fillColor = "white",
         color = "grey",
         weight = 1,
-        fillOpacity = 0.3,
-        popup = leafpop::popupGraph(tract_graphs)
+        fillOpacity = 0.3
       )
   }
   lmap

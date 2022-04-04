@@ -19,6 +19,13 @@ people <- create_dots(data_wide)
 
 ```{r}
 base_map() |> 
-  add_people(2000, people)
+  add_people(2020, people)
 ```
+
+```{r}
+base_map() |> 
+  add_tracts(1980, data_wide) |> 
+  add_people(1980, people)
+```
+
 

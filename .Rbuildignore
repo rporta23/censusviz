@@ -3,5 +3,5 @@
 ^data-large/
 ^data-raw/
 ^README\.Rmd$
-^LICENSE.md$
-^cran-comments.md$
+^LICENSE\.md$
+^cran-comments\.md$
