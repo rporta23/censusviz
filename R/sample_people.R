@@ -26,6 +26,8 @@ sample_people_many <- function(data, num_people = 1000) {
 #' Generate dataframe with locations of dots representing people on map
 #' @export
 create_dots <- function(data) {
+  # resolve non-spherical coordinates error
+  sf::sf_use_s2(FALSE)
   data |> 
     dplyr::mutate(
       people = purrr::map(tract_data, sample_people_many, num_people = 100)
