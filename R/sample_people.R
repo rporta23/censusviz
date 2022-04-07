@@ -23,12 +23,12 @@ sample_people_many <- function(data, num_people = 1000) {
 
 #' Generate dataframe with locations of dots representing people on map
 #' @export
-create_dots <- function(data) {
+create_dots <- function(data, num_people = 100) {
   # resolve non-spherical coordinates error
   sf::sf_use_s2(FALSE)
   data |> 
     dplyr::mutate(
-      people = purrr::map(tract_data, sample_people_many, num_people = 100)
+      people = purrr::map(tract_data, sample_people_many, num_people = num_people)
     ) |> 
     dplyr::select(year, people) |> 
     tidyr::unnest(cols = people) |> 

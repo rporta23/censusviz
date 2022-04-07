@@ -12,6 +12,7 @@ base_map <- function() {
 
 #' @rdname base_map
 #' @export
+#' @importFrom dplyr %>%
 #' @examples 
 #' \dontrun{
 #' add_people(base_map(), 1915)

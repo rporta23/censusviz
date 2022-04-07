@@ -4,7 +4,7 @@
 \alias{create_dots}
 \title{Generate dataframe with locations of dots representing people on map}
 \usage{
-create_dots(data)
+create_dots(data, num_people = 100)
 }
 \description{
 Generate dataframe with locations of dots representing people on map
