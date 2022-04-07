@@ -1,5 +1,4 @@
 #' Return the most recent Census year
-#' @export
 #' @param x A year
 #' @examples 
 #' last_census_year(1920)
@@ -18,7 +17,6 @@ last_census_year <- function(x) {
 
 #' Color palette to be shared across maps
 #' @rdname last_census_year
-#' @export
 #' @param palette Name of color palette passed to 
 #' \code{\link[grDevices]{hcl.colors}}
 #' @examples 

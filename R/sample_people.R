@@ -3,7 +3,6 @@ globalVariables(
 )
 
 #' Helper function to create_dots
-#' @export
 sample_people <- function(data, var_id, num_people = 1000) {
   x <- data[[var_id]]
   cat(paste("\nSampling variable:", var_id))
@@ -14,7 +13,6 @@ sample_people <- function(data, var_id, num_people = 1000) {
 }
 
 #' Helper function to create_dots
-#' @export
 sample_people_many <- function(data, num_people = 1000) {
   vars <- censusviz::census_var_map |> 
     dplyr::filter(!is.na(race_label)) |> 
