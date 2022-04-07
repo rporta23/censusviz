@@ -6,7 +6,7 @@ globalVariables(
 #' @export
 # Creates base layers used by all maps
 base_map <- function() {
-  leaflet::leaflet() |> 
+  leaflet::leaflet() %>% 
     leaflet::addTiles()
 }
 
@@ -27,11 +27,11 @@ add_people <- function(lmap, year_id, people_data) {
   
   # hard-coded maximum points to remove!!
   max_layerId = paste0("people_", 1:2000)
-  lmap <- lmap |> 
-    leaflet::removeShape(layerId = max_layerId) |> 
+  lmap <- lmap %>% 
+    leaflet::removeShape(layerId = max_layerId) %>% 
     leaflet::removeControl(layerId = "people")
   
-  data <- people_data |>  
+  data <- people_data %>%  
     dplyr::filter(year == censusviz::last_census_year(year_id))
   
   if (nrow(data) > 0) { # puts dots on map if they exist
@@ -53,7 +53,7 @@ add_people <- function(lmap, year_id, people_data) {
     
     pal <- colorPeople()
     
-    out <- lmap |> 
+    out <- lmap %>% 
       # adds dots representing spatial distribution of racial demographics
       # each demographic group is a different color, and each dot represents 100 people 
       # note that the location of the dots are randomized within each census tract,
@@ -66,7 +66,7 @@ add_people <- function(lmap, year_id, people_data) {
         weight = 3,
         fillOpacity = 0.3,
         popup = ~popup
-      ) |> 
+      ) %>% 
       leaflet::addLegend(
         data = data,
         layerId = "people",
@@ -96,20 +96,20 @@ add_tracts <- function(lmap, year_id, tract_data) {
   # maximum number of tracts in any year
   max_num_tracts <- max(purrr::map_int(tract_data$tract_data, nrow))
   # remove any existing tracts
-  lmap <- lmap |>
+  lmap <- lmap %>%
     leaflet::removeShape(layerId = paste0("tract_", 1:max_num_tracts))
   
-  bg <- tract_data |> 
+  bg <- tract_data %>% 
     dplyr::filter(year == last_census_year(year_id))
   
   if (nrow(bg) > 0) { # add tracts for this Census year only
     
-    tract_shp <- bg |> 
-      dplyr::pull(tract_data) |> 
+    tract_shp <- bg %>% 
+      dplyr::pull(tract_data) %>% 
       purrr::pluck(1)
     ids <- paste0("tract_", 1:nrow(tract_shp))
     
-    lmap <- lmap |>
+    lmap <- lmap %>%
       leaflet::addPolygons(
         data = tract_shp, 
         layerId = ids,

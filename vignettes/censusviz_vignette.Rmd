@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-data_wide <- get_data_wide("data-large", "California", "Orange")
+data_wide <- get_data_wide("data-large", "New York", "Madison")
 ```
 
 ```{r}
@@ -18,13 +18,13 @@ people <- create_dots(data_wide, num_people = 1000)
 ```
 
 ```{r}
-base_map() |> 
+base_map() %>% 
   add_people(2020, people)
 ```
 
 ```{r}
-base_map() |> 
-  add_tracts(2020, data_wide) |> 
+base_map() %>% 
+  add_tracts(2020, data_wide) %>% 
   add_people(2020, people)
 ```
 

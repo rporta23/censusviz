@@ -7,7 +7,7 @@
 #' last_census_year(1980)
 #' last_census_year(1985)
 last_census_year <- function(x) {
-  years <- censusviz::census_var_map$year |> unique()
+  years <- censusviz::census_var_map$year %>% unique()
   if (x < min(years)) {
     return(0)
   } else {
