@@ -4,9 +4,14 @@ globalVariables(
 
 #' Helper function to create_dots
 sample_people <- function(data, var_id, num_people = 1000) {
-  x <- data[[var_id]]
+   x <- data[[var_id]]
+   is_na <- is.na(x)
+   x <- x %>%
+     na.omit() %>%
+     as.numeric()
   cat(paste("\nSampling variable:", var_id))
-  data  %>%  
+  data  %>%
+    dplyr::filter(is_na == FALSE) %>%
     sf::st_sample(size = round(x / num_people), exact = TRUE, by_polygon = TRUE) %>% 
     sf::st_as_sf() %>% 
     dplyr::mutate(variable = var_id)
