@@ -32,7 +32,7 @@ add_people <- function(lmap, year_id, people_data) {
     leaflet::removeControl(layerId = "people")
   
   data <- people_data %>%  
-    dplyr::filter(year == censusviz::last_census_year(year_id))
+    dplyr::filter(year == last_census_year(year_id))
   
   if (nrow(data) > 0) { # puts dots on map if they exist
     data <- data %>% 
@@ -72,7 +72,7 @@ add_people <- function(lmap, year_id, people_data) {
         layerId = "people",
         position = "topleft",
         pal = pal,
-        values = unique(censusviz::census_var_map$race_label),
+        values = unique(census_var_map$race_label),
         title = "Categories"
       )
   } else { # case where year < min year

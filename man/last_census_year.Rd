@@ -20,14 +20,3 @@ Return the most recent Census year
 
 Color palette to be shared across maps
 }
-\examples{
-last_census_year(1920)
-last_census_year(1960)
-last_census_year(1975)
-last_census_year(1980)
-last_census_year(1985)
-pal <- colorPeople()
-pal("White")
-pal("Black")
-pal("Other")
-}

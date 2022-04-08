@@ -32,6 +32,6 @@ create_dots <- function(data, num_people = 100) {
     ) %>% 
     dplyr::select(year, people) %>% 
     tidyr::unnest(cols = people) %>% 
-    dplyr::left_join(censusviz::census_var_map, by = c("year", "variable")) %>% 
+    dplyr::left_join(census_var_map, by = c("year", "variable")) %>% 
     sf::st_as_sf()
 }

@@ -30,6 +30,7 @@ Imports:
     leaflet,
     leafpop,
     lubridate,
+    lwgeom,
     purrr,
     shiny,
     shinythemes,

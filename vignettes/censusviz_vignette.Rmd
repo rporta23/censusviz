@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-data_wide <- get_data_wide("data-large", "New York", "Madison")
+data_wide <- get_data_wide("data-large", "New York", "Ulster")
 ```
 
 ```{r}
