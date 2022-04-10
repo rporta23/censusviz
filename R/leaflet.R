@@ -2,7 +2,7 @@ globalVariables(
   c("year", "tract", "race_label", "is_hispanic", ".")
 )
 
-#' Leaflet maps for Springfield
+#' Plot census tract boundaries and demographic data on a leaflet map
 #' @export
 # Creates base layers used by all maps
 base_map <- function() {
@@ -13,6 +13,7 @@ base_map <- function() {
 #' @rdname base_map
 #' @export
 #' @importFrom dplyr %>%
+#' @param people_data A dataframe containing locations to place dots representing people, output of create_dots function
 #' @examples 
 #' \dontrun{
 #' add_people(base_map(), 1915)
@@ -85,6 +86,7 @@ add_people <- function(lmap, year_id, people_data) {
 #' @export
 #' @param lmap A \code{\link[leaflet]{leaflet}} map object
 #' @param year_id A four-digit year
+#' @param tract_data A dataframe containing shapefiles to plot census tract boundaries for each year, output of get_data_wide function
 #' @examples
 #' \dontrun{
 #' add_tracts(base_map(), 1960)

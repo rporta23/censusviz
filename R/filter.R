@@ -7,7 +7,7 @@ globalVariables(
 #' @param state character string specifying the name of the desired state
 #' @param county character string specifying the name of the desired county
 get_data_long <- function(path, state, county) {
-  load(here::here(path, "tracts_long_all.rda"))
+  load(file.path(path, "tracts_long_all.rda"))
   tracts_long_all %>%
     dplyr::filter(STATE == state, stringr::str_detect(COUNTY, county))
 }
@@ -16,7 +16,7 @@ get_data_long <- function(path, state, county) {
 #' @rdname get_data_long
 #' @export
 get_data_wide <- function(path, state, county) {
-  load(here::here(path, "tracts_demo_joined.rda"))
+  load(file.path(path, "tracts_demo_joined.rda"))
   tract_new <- tracts_demo_joined$tract %>%
     purrr::map(~ dplyr::filter(.x, STATE == state, stringr::str_detect(COUNTY, county)))
   tibble::tibble(year = tracts_demo_joined$year, tract_data = tract_new) %>%
