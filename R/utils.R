@@ -10,7 +10,6 @@ last_census_year <- function(x) {
 }
 
 #' Color palette to be shared across maps
-#' @rdname last_census_year
 #' @param palette Name of color palette passed to 
 #' \code{\link[grDevices]{hcl.colors}}
 colorPeople <- function(palette = "Zissou 1") {

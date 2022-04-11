@@ -3,9 +3,9 @@ globalVariables(
 )
 #' Generate data frame with demographic information for 1950-2020 for specified region
 #' @export
-#' @param path character string speciying the path where data is located
-#' @param state character string specifying the name of the desired state
-#' @param county character string specifying the name of the desired county
+#' @param path A character string specifying the path where data is located
+#' @param state A character string specifying the name of the desired state
+#' @param county A character string specifying the name of the desired county
 get_data_long <- function(path, state, county) {
   load(file.path(path, "tracts_long_all.rda"))
   tracts_long_all %>%

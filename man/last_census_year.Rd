@@ -2,21 +2,13 @@
 % Please edit documentation in R/utils.R
 \name{last_census_year}
 \alias{last_census_year}
-\alias{colorPeople}
 \title{Return the most recent Census year}
 \usage{
 last_census_year(x)
-
-colorPeople(palette = "Zissou 1")
 }
 \arguments{
 \item{x}{A year}
-
-\item{palette}{Name of color palette passed to
-\code{\link[grDevices]{hcl.colors}}}
 }
 \description{
 Return the most recent Census year
-
-Color palette to be shared across maps
 }

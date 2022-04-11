@@ -6,6 +6,11 @@
 \usage{
 create_dots(data, num_people = 100)
 }
+\arguments{
+\item{data}{A dataframe containing shapefiles to plot census tract boundaries for each year, output of get_data_wide function}
+
+\item{num_people}{number of individuals that each dot represents}
+}
 \description{
 Generate dataframe with locations of dots representing people on map
 }

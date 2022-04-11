@@ -10,11 +10,11 @@ get_data_long(path, state, county)
 get_data_wide(path, state, county)
 }
 \arguments{
-\item{path}{character string speciying the path where data is located}
+\item{path}{A character string specifying the path where data is located}
 
-\item{state}{character string specifying the name of the desired state}
+\item{state}{A character string specifying the name of the desired state}
 
-\item{county}{character string specifying the name of the desired county}
+\item{county}{A character string specifying the name of the desired county}
 }
 \description{
 Generate data frame with demographic information for 1950-2020 for specified region

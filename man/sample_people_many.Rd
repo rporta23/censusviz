@@ -6,6 +6,11 @@
 \usage{
 sample_people_many(data, num_people = 1000)
 }
+\arguments{
+\item{data}{An sf object containing the geospatial data defining the census tract boundaries joined with racial demographic data for one specific year (one element of the tract_data column of the dataframe returned by get_data_wide function)}
+
+\item{num_people}{number of individuals that each dot represents}
+}
 \description{
 Helper function to create_dots
 }

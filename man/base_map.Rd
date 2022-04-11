@@ -4,7 +4,7 @@
 \alias{base_map}
 \alias{add_people}
 \alias{add_tracts}
-\title{Leaflet maps for Springfield}
+\title{Plot census tract boundaries and demographic data on a leaflet map}
 \usage{
 base_map()
 
@@ -16,9 +16,13 @@ add_tracts(lmap, year_id, tract_data)
 \item{lmap}{A \code{\link[leaflet]{leaflet}} map object}
 
 \item{year_id}{A four-digit year}
+
+\item{people_data}{A dataframe containing locations to place dots representing people, output of create_dots function}
+
+\item{tract_data}{A dataframe containing shapefiles to plot census tract boundaries for each year, output of get_data_wide function}
 }
 \description{
-Leaflet maps for Springfield
+Plot census tract boundaries and demographic data on a leaflet map
 }
 \examples{
 \dontrun{

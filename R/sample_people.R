@@ -3,11 +3,14 @@ globalVariables(
 )
 
 #' Helper function to create_dots
+#' @param data An sf object containing the geospatial data defining the census tract boundaries joined with racial demographic data for one specific year (one element of the tract_data column of the dataframe returned by get_data_wide function)
+#' @param var_id A character string specifying the name of the variable for which to sample
+#' @param num_people number of individuals that each dot represents
 sample_people <- function(data, var_id, num_people = 1000) {
    x <- data[[var_id]]
    is_na <- is.na(x)
    x <- x %>%
-     na.omit() %>%
+     stats::na.omit() %>%
      as.numeric()
   cat(paste("\nSampling variable:", var_id))
   data  %>%
@@ -18,6 +21,8 @@ sample_people <- function(data, var_id, num_people = 1000) {
 }
 
 #' Helper function to create_dots
+#' @param data An sf object containing the geospatial data defining the census tract boundaries joined with racial demographic data for one specific year (one element of the tract_data column of the dataframe returned by get_data_wide function)
+#' @param num_people number of individuals that each dot represents
 sample_people_many <- function(data, num_people = 1000) {
   vars <- censusviz::census_var_map %>% 
     dplyr::filter(!is.na(race_label)) %>% 
@@ -27,6 +32,8 @@ sample_people_many <- function(data, num_people = 1000) {
 }
 
 #' Generate dataframe with locations of dots representing people on map
+#' @param data A dataframe containing shapefiles to plot census tract boundaries for each year, output of get_data_wide function
+#' @param num_people number of individuals that each dot represents
 #' @export
 create_dots <- function(data, num_people = 100) {
   # resolve non-spherical coordinates error
@@ -37,6 +44,6 @@ create_dots <- function(data, num_people = 100) {
     ) %>% 
     dplyr::select(year, people) %>% 
     tidyr::unnest(cols = people) %>% 
-    dplyr::left_join(census_var_map, by = c("year", "variable")) %>% 
+    dplyr::left_join(censusviz::census_var_map, by = c("year", "variable")) %>% 
     sf::st_as_sf()
 }

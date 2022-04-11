@@ -73,7 +73,7 @@ add_people <- function(lmap, year_id, people_data) {
         layerId = "people",
         position = "topleft",
         pal = pal,
-        values = unique(census_var_map$race_label),
+        values = unique(censusviz::census_var_map$race_label),
         title = "Categories"
       )
   } else { # case where year < min year
