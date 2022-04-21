@@ -10,11 +10,16 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-data_wide <- get_data_wide("data-large", "New York", "Madison")
+data_wide <- get_data_wide()
 ```
 
 ```{r}
-people <- create_dots(data_wide, num_people = 100)
+data_wide_filtered <- filter_data_wide(data_wide, "New York", "Madison")
+```
+
+
+```{r}
+people <- create_dots(data_wide_filtered, num_people = 100)
 ```
 
 ```{r}
@@ -24,12 +29,8 @@ base_map() %>%
 
 ```{r}
 base_map() %>% 
-  add_tracts(2020, data_wide) %>% 
+  add_tracts(2020, data_wide_filtered) %>% 
   add_people(2020, people)
-```
-
-```{r}
-data_long <- get_data_long("data-large", "New York", "Madison")
 ```
 
 

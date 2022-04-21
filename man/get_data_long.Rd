@@ -2,22 +2,15 @@
 % Please edit documentation in R/filter.R
 \name{get_data_long}
 \alias{get_data_long}
-\alias{get_data_wide}
-\title{Generate data frame with demographic information for 1950-2020 for specified region}
+\alias{filter_data_wide}
+\title{Read in and load tracts_long_all}
 \usage{
-get_data_long(path, state, county)
+get_data_long()
 
-get_data_wide(path, state, county)
-}
-\arguments{
-\item{path}{A character string specifying the path where data is located}
-
-\item{state}{A character string specifying the name of the desired state}
-
-\item{county}{A character string specifying the name of the desired county}
+filter_data_wide(data, state, county)
 }
 \description{
-Generate data frame with demographic information for 1950-2020 for specified region
+Read in and load tracts_long_all
 
 Generate data frame used to map demographics
 }
