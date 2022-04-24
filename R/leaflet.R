@@ -16,26 +16,20 @@ base_map <- function() {
 #' @param people_data A dataframe containing locations to place dots representing people, output of create_dots function
 #' @examples 
 #' \dontrun{
-#' add_people(base_map(), 1915)
-#' add_people(base_map(), 1960)
-#' add_people(base_map(), 1975)
-#' # should see same color mapping
-#' add_people(base_map(), 2011)
-#' # shouldn't see both sets of points
-#' add_people(add_people(base_map(), 1975), 2011)
+#' add_people(base_map(), 2000, create_dots(filter_data_wide(get_data_wide(), "New York", "Madison")))
 #' }
 add_people <- function(lmap, year_id, people_data) {
-  
-  # hard-coded maximum points to remove!!
-  max_layerId = paste0("people_", 1:2000)
-  lmap <- lmap %>% 
-    leaflet::removeShape(layerId = max_layerId) %>% 
-    leaflet::removeControl(layerId = "people")
+  if(class(lmap)[[1]] != "leaflet") stop("invalid input, 'lmap' argument must have class leaflet")
+  if(!is.numeric(year_id)) stop("invalid input, 'year_id' argument must have class numeric")
+  if(!is.data.frame(people_data)) stop("invalid input, 'people_data' argument must have class data.frame")
+  if(length(year_id) > 1) stop("invalid input, 'year_id' argument must have length 1")
   
   data <- people_data %>%  
     dplyr::filter(year == last_census_year(year_id))
   
   if (nrow(data) > 0) { # puts dots on map if they exist
+    
+    # create popups
     data <- data %>% 
       dplyr::mutate(
         popup =
@@ -52,7 +46,7 @@ add_people <- function(lmap, year_id, people_data) {
         layerId = paste0("people_", 1:nrow(.))
       )
     
-    pal <- colorPeople()
+    pal <- colorPeople() # generate color palette
     
     out <- lmap %>% 
       # adds dots representing spatial distribution of racial demographics
@@ -74,7 +68,7 @@ add_people <- function(lmap, year_id, people_data) {
         position = "topleft",
         pal = pal,
         values = unique(censusviz::census_var_map$race_label),
-        title = "Categories"
+        title = "Race"
       )
   } else { # case where year < min year
     out <- lmap
@@ -89,22 +83,19 @@ add_people <- function(lmap, year_id, people_data) {
 #' @param tract_data A dataframe containing shapefiles to plot census tract boundaries for each year, output of get_data_wide function
 #' @examples
 #' \dontrun{
-#' add_tracts(base_map(), 1960)
-#' add_tracts(base_map(), 1975)
-#' add_tracts(add_tracts(base_map(), 1960), 2010)
+#' add_tracts(base_map(), 1960, filter_data_wide(get_data_wide(), "New York", "Madison"))
 #' }
 add_tracts <- function(lmap, year_id, tract_data) {
-  # year_id <- convert_year(year_id)
-  # maximum number of tracts in any year
-  max_num_tracts <- max(purrr::map_int(tract_data$tract_data, nrow))
-  # remove any existing tracts
-  lmap <- lmap %>%
-    leaflet::removeShape(layerId = paste0("tract_", 1:max_num_tracts))
+  if(class(lmap)[[1]] != "leaflet") stop("invalid input, 'lmap' argument must have class leaflet")
+  if(!is.numeric(year_id)) stop("invalid input, 'year_id' argument must have class numeric")
+  if(!is.data.frame(tract_data)) stop("invalid input, 'tract_data' argument must have class data.frame")
+  if(length(year_id) > 1) stop("invalid input, 'year_id' argument must have length 1")
   
+  # add tracts for the most recent Census year only
   bg <- tract_data %>% 
     dplyr::filter(year == last_census_year(year_id))
   
-  if (nrow(bg) > 0) { # add tracts for this Census year only
+  if (nrow(bg) > 0) { # put tracts on map if they exist
     
     tract_shp <- bg %>% 
       dplyr::pull(tract_data) %>% 

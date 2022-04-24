@@ -2,15 +2,34 @@
 % Please edit documentation in R/filter.R
 \name{get_data_long}
 \alias{get_data_long}
+\alias{get_data_wide}
+\alias{filter_data_long}
 \alias{filter_data_wide}
-\title{Read in and load tracts_long_all}
+\title{Read in and filter demographic and census tract boundaries data from the U.S. census}
 \usage{
 get_data_long()
 
+get_data_wide()
+
+filter_data_long(data, state, county)
+
 filter_data_wide(data, state, county)
 }
-\description{
-Read in and load tracts_long_all
+\arguments{
+\item{data}{A dataframe returned by get_data_long for filter_data_long or get_data_wide for filter_data_wide}
 
-Generate data frame used to map demographics
+\item{state}{A character string specifying the name of the desired state}
+
+\item{county}{A character string specifying the name of the desired county}
+}
+\description{
+Read in and filter demographic and census tract boundaries data from the U.S. census
+}
+\examples{
+filter_data_long(get_data_long(), "New York", "Madison")
+filter_data_long(get_data_long(), "Massachusetts", "Hampshire")
+\dontrun{
+filter_data_wide(get_data_wide(), "New York", "Madison")
+filter_data_wide(get_data_wide(), "Massachusetts", "Hampshire")
+}
 }

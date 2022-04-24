@@ -26,17 +26,9 @@ Plot census tract boundaries and demographic data on a leaflet map
 }
 \examples{
 \dontrun{
-add_people(base_map(), 1915)
-add_people(base_map(), 1960)
-add_people(base_map(), 1975)
-# should see same color mapping
-add_people(base_map(), 2011)
-# shouldn't see both sets of points
-add_people(add_people(base_map(), 1975), 2011)
+add_people(base_map(), 2000, create_dots(filter_data_wide(get_data_wide(), "New York", "Madison")))
 }
 \dontrun{
-add_tracts(base_map(), 1960)
-add_tracts(base_map(), 1975)
-add_tracts(add_tracts(base_map(), 1960), 2010)
+add_tracts(base_map(), 1960, filter_data_wide(get_data_wide(), "New York", "Madison"))
 }
 }
