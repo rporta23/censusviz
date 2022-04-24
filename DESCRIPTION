@@ -14,6 +14,8 @@ Description: The censusviz package facilitate the process of analyzing and visua
     analysis, or they can use the functionality of the package to visualize it spatially using individual maps or a shiny app.
 License: MIT + file LICENSE
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
@@ -39,3 +41,4 @@ Imports:
     tidyr
 URL: https://github.com/rporta23/censusviz
 BugReports: https://github.com/rporta23/censusviz/issues
+VignetteBuilder: knitr
