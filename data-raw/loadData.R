@@ -14,7 +14,7 @@ usethis::use_data(boston_sample, overwrite = TRUE)
 
 # pre-load the population of Manhattan, New York
 manhattan_sample <- data_wide %>%
-  filter_data_wide("New York", "Manhattan") %>%
+  filter_data_wide("New York", "New York") %>%
   create_dots()
 
 usethis::use_data(manhattan_sample, overwrite = TRUE)
