@@ -1,5 +1,5 @@
 globalVariables(
-  c("STATE", "COUNTY", "tracts_long_all", "tracts_demo_joined", "tract_data", "n")
+  c("STATE", "COUNTY", "tracts_long_all", "tracts_demo_joined1", "tracts_demo_joined2", "tract_data", "n")
 )
 
 #' Read in and filter demographic and census tract boundaries data from the U.S. census
