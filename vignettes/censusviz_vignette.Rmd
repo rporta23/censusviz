@@ -1,36 +1,120 @@
 ---
-title: "censusviz_vignette"
-author: "Rose Porta"
-date: "4/2/2022"
-output: html_document
+title: "censusviz"
+author: "Irene Foster, Catherine Park, Rose Porta"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{censusviz}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
 ```
+
+```{r setup}
+library(censusviz)
+library(ggplot2)
+library(dplyr)
+```
+
+## About censusviz
+
+The [`censusviz`](https://github.com/rporta23/censusviz) package allows users to explore and visualize historical racial demographic census data for any region in the United States using leaflet maps integrated into a shiny app. This will help facilitate with the process of using historical census data for analyzing and visualizing. 
+
+This package was inspired by the `nepm` package. 
+
+## Getting Start
+
+In the example that will follow, we will be using New York, Madison county to illustrate our package's functionality. 
+
+### Reading in Data
+
+The three data frames used in this package are [`tracts_long_all.rda`](https://github.com/CJParkNW/cenviz_data), [`tracts_demo_joined1.rda`](https://github.com/rporta23/censusviz-data), and [`tracts_demo_joined2.rda`](https://github.com/CJParkNW/cenviz_data). Each one is read in directly from a GitHub repository due to their large sizes. `tracts_demo_joined1.rda` and `tracts_demo_joined2.rda` are combined when calling function get_data_wide() to create data_wide. `tracts_long_all.rda` will be called with get_data_long().
 
 ```{r}
 data_wide <- get_data_wide()
+
+data_long <- get_data_long()
 ```
+
+### Filtering Data by State, County
+
+The user can call filter_data_wide() and filter_data_long() with the proper state and county to filter out only the data that is related to that area. Here we are filtering for data only related to the county Madison in New York.
 
 ```{r}
 data_wide_filtered <- filter_data_wide(data_wide, "New York", "Madison")
 ```
 
+### Creating Sampling Dots
+
+After filtering the data, the user can use data_wide_filtered with create_dots() to visualize on a leaflet map. create_dots() samples random points within each census tract for each racial category so that each dot represents num_people by the set sampling value (default = 100 people per dot) to show the distribution of demographics across the country.
+
+Here we have the sampling dot size set as 100. The sampling size can be adjusted to be higher or lower. It is important to note that the smaller the size, the more detailed the map will be however it will take a longer time for create_dots() to run especially for large counties. However, with a larger sampling size, there is a risk of under representing smaller populations since it will round down to zero if the total population size for a group is smaller than the sampling size for create_dots().
+
+Additionally, this process can take a few minutes to several hours depending on the county size and the sampling size. The larger the county size and the smaller the sampling size, the longer the process will be for create_dots().
 
 ```{r}
 people <- create_dots(data_wide_filtered, num_people = 100)
 ```
 
+
+### Generating Map
+
+After creating the sampling dots, this can be plotted on a map with the function base_map() which will create a blank leaflet map and add_people() which will add the sampling dots for each year. 
+
 ```{r}
-base_map() %>% 
+base_map() %>%
   add_people(2020, people)
 ```
 
+add_tracts() can also be used to add the tract lines for the county. 
+
 ```{r}
-base_map() %>% 
-  add_tracts(2020, data_wide_filtered) %>% 
+base_map() %>%
+  add_tracts(2020, data_wide_filtered) %>%
   add_people(2020, people)
 ```
 
 
+### Generating Graphs 
+
+data_long_filtered with dplyr and ggplot2 allows the user to filter and create graphs to explore the distribution of the populations in the selected county.
+
+```{r}
+data_long_filtered_Mad <- filter_data_long(data_long, "New York", "Madison")
+
+data_long_filtered_sum_Mad <- data_long_filtered_Mad %>%
+  group_by(year, race_label) %>%
+  summarize(total = sum(n))
+
+ggplot(data_long_filtered_sum_Mad, aes(x = year, y = total, color = race_label)) +
+  geom_line() +
+  labs(
+    title = "Total Number of People in Madison, NY",
+    x = "Year",
+    y = "Total Number of People",
+    color = "Race"
+  )
+```
+
+
+```{r}
+data_long_filtered_Queens <- filter_data_long(data_long, "New York", "Queens")
+
+data_long_filtered_sum_Queens <- data_long_filtered_Queens %>%
+  group_by(year, race_label) %>%
+  summarize(total = sum(n))
+
+ggplot(data_long_filtered_sum_Queens, aes(x = year, y = total, color = race_label)) +
+  geom_line() +
+  labs(
+    title = "Total Number of People in Queens, NY",
+    x = "Year",
+    y = "Total Number of People",
+    color = "Race"
+  )
+```
