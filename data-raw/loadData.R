@@ -39,3 +39,9 @@ sanfrancisco_sample <- data_wide %>%
 seattle_sample <- data_wide %>%
   filter_data_wide("Washington", "King") %>%
   create_dots()
+
+
+#' Function to create the data_wide for Madison, New York
+madison_data_wide <- data_wide %>% 
+  filter_data_wide("New York", "Madison")
+  
