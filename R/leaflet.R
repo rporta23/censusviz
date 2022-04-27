@@ -32,17 +32,17 @@ add_people <- function(lmap, year_id, people_data) {
     # create popups
     data <- data %>% 
       dplyr::mutate(
-        # popup =
-        #   paste(
-        #     "This dot represents <strong>100 people</strong>
-        #   whose race was identified as <strong>",
-        #     race_label,
-        #     "</strong> in the",
-        #     year,
-        #     "Census. These people were",
-        #     ifelse(is_hispanic, "", "<strong>not</strong>"),
-        #     "identified as Hispanic."
-        #   ),
+        popup =
+          paste(
+            "This dot represents <strong>100 people</strong>
+          whose race was identified as <strong>",
+            race_label,
+            "</strong> in the",
+            year,
+            "Census. These people were",
+            ifelse(is_hispanic, "", "<strong>not</strong>"),
+            "identified as Hispanic."
+          ),
         layerId = paste0("people_", 1:nrow(.))
       )
     

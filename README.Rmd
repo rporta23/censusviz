@@ -1,4 +1,5 @@
 ---
+always_allow_html: true
 output: github_document
 ---
 
@@ -13,6 +14,7 @@ knitr::opts_chunk$set(
 )
 library(dplyr)
 library(ggplot2)
+library(sf)
 ```
 
 # censusviz
@@ -21,6 +23,12 @@ library(ggplot2)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/censusviz)](https://CRAN.R-project.org/package=censusviz)
 <!-- badges: end -->
+
+<right>
+
+![](inst/hex-censusviz.png){height=139}
+
+</right>
 
 The [`censusviz`](https://github.com/rporta23/censusviz) package allows users to explore and visualize historical racial demographic census data for any region in the United States using leaflet maps integrated into a shiny app. This will help facilitate with the process of using historical census data for analyzing and visualizing. 
 
@@ -42,17 +50,20 @@ library(censusviz)
 
 Visualize spatial distribution of racial demographics for any census year between 1950-2020 using `add_people()`. Dataframes with locations of dots to plot on the map for Boston, MA, Manhattan, NY, and San Francisco, CA, are included in the package. However, you can get the data for any county in the U.S. using the functions provided in `censusviz`. See the vignette for more details on how to create this type of map for any region in the U.S. 
 
-```{r}
+```{r, eval = FALSE}
 # create map for Boston, MA in 1960
 base_map() %>%
   add_people(1960, boston_sample)
 ```
 
-```{r}
+![](inst/boston1.png){height=300}
+```{r, eval = FALSE}
 # create map for Boston, MA in 2000
-# base_map() %>%
-#   add_people(2000, boston_sample)
+base_map() %>%
+  add_people(2000, boston_sample)
 ```
+
+![](inst/boston2.png){height=300}
 
 ## Example 2
 

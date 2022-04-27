@@ -11,6 +11,12 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/censusviz)](https://CRAN.R-project.org/package=censusviz)
 <!-- badges: end -->
 
+<right>
+
+<img src="inst/hex-censusviz.png" height="139" />
+
+</right>
+
 The [`censusviz`](https://github.com/rporta23/censusviz) package allows
 users to explore and visualize historical racial demographic census data
 for any region in the United States using leaflet maps integrated into a
@@ -50,15 +56,19 @@ type of map for any region in the U.S.
 
 ``` r
 # create map for Boston, MA in 1960
-# base_map() %>%
-#   add_people(1960, boston_sample)
+base_map() %>%
+  add_people(1960, boston_sample)
 ```
+
+<img src="inst/boston1.png" height="300" />
 
 ``` r
 # create map for Boston, MA in 2000
-# base_map() %>%
-#   add_people(2000, boston_sample)
+base_map() %>%
+  add_people(2000, boston_sample)
 ```
+
+<img src="inst/boston2.png" height="300" />
 
 ## Example 2
 
