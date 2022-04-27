@@ -45,10 +45,6 @@ data_wide <- get_data_wide()
 
 The user can call filter_data_wide() and filter_data_long() with the proper state and county to filter out only the data that is related to that area. Here we are filtering for data only related to the county Madison in New York.
 
-```{r}
-data_wide_filtered <- filter_data_wide(data_wide, "New York", "Madison")
-```
-
 ### Creating Sampling Dots
 
 After filtering the data, the user can use data_wide_filtered with create_dots() to visualize on a leaflet map. create_dots() samples random points within each census tract for each racial category so that each dot represents num_people by the set sampling value (default = 100 people per dot) to show the distribution of demographics across the country.
@@ -58,7 +54,7 @@ Here we have the sampling dot size set as 100. The sampling size can be adjusted
 Additionally, this process can take a few minutes to several hours depending on the county size and the sampling size. The larger the county size and the smaller the sampling size, the longer the process will be for create_dots().
 
 ```{r}
-people <- create_dots(data_wide_filtered, num_people = 100)
+people <- create_dots(madison_data_wide, num_people = 100)
 ```
 
 
@@ -75,7 +71,7 @@ add_tracts() can also be used to add the tract lines for the county.
 
 ```{r}
 base_map() %>%
-  add_tracts(2020, data_wide_filtered) %>%
+  add_tracts(2020, madison_data_wide) %>%
   add_people(2020, people)
 ```
 
