@@ -27,7 +27,7 @@ The [`censusviz`](https://github.com/rporta23/censusviz) package allows users to
 
 This package was inspired by the `nepm` package. 
 
-## Getting Start
+## Getting Started
 
 In the example that will follow, we will be using New York, Madison county to illustrate our package's functionality. 
 
