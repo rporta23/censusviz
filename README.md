@@ -41,14 +41,6 @@ following function:
 
 ``` r
 remotes::install_github("rporta23/censusviz")
-#> 
-#> * checking for file ‘/private/var/folders/ft/724hn599011fx295rxt1bcsc0000gn/T/RtmpFioBu4/remotes409596158c2/rporta23-censusviz-0423061/DESCRIPTION’ ... OK
-#> * preparing ‘censusviz’:
-#> * checking DESCRIPTION meta-information ... OK
-#> * checking for LF line-endings in source and make files and shell scripts
-#> * checking for empty or unneeded directories
-#> Removed empty directory ‘censusviz/data-raw’
-#> * building ‘censusviz_0.0.0.9004.tar.gz’
 ```
 
 ``` r

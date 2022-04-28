@@ -34,7 +34,7 @@ This package was inspired by the `nepm` package. The nepm package was initially 
 
 `censusviz` is hosted on GitHub and can be installed by running the following function:
 
-``` {r, message = FALSE}
+``` {r, eval = FALSE}
 remotes::install_github("rporta23/censusviz")
 ```
 
