@@ -40,7 +40,15 @@ with [New England Public Media](https://www.nepm.org/).
 following function:
 
 ``` r
-#remotes::install_github("rporta23/censusviz")
+remotes::install_github("rporta23/censusviz")
+#> 
+#> * checking for file ‘/private/var/folders/ft/724hn599011fx295rxt1bcsc0000gn/T/RtmpFioBu4/remotes409596158c2/rporta23-censusviz-0423061/DESCRIPTION’ ... OK
+#> * preparing ‘censusviz’:
+#> * checking DESCRIPTION meta-information ... OK
+#> * checking for LF line-endings in source and make files and shell scripts
+#> * checking for empty or unneeded directories
+#> Removed empty directory ‘censusviz/data-raw’
+#> * building ‘censusviz_0.0.0.9004.tar.gz’
 ```
 
 ``` r
@@ -114,6 +122,11 @@ ggplot(data_long_sum, aes(x = year, y = total, color = race_label)) +
 ```
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+
+## See Also
+
+If you are interested in exploring U.S. census data, see related package
+[`tidycensus`](https://github.com/cran/tidycensus)
 
 ## Contributors
 
