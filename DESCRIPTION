@@ -1,10 +1,12 @@
 Package: censusviz
 Title: Framework to Visualize Historical Census Data
-Version: 0.0.0.9003
-Authors@R: 
-    person("Rose", "Porta", , "rporta@smith.edu", role = c("aut", "cre"))
-    person("Irene", "Foster", , "ifoster25@smith.edu", role = c("aut", "cre"))
-    person("Catherine", "Park", , "cpark65@smith.edu", role = c("aut", "cre"))
+Version: 0.0.0.9004
+Authors@R: c(
+    person("Rose", "Porta", email = "rporta@smith.edu", role = c("aut", "cre")),
+    person("Irene", "Foster", email = "ifoster25@smith.edu", role = c("aut")),
+    person("Catherine", "Park", email = "cpark65@smith.edu", role = c("aut")),
+    person("Benjamin S.", "Baumer", email = "bbaumer@smith.edu", role = c("ctb"), comment = c(ORCID = "0000-0002-3279-0516"))
+    )
 Description: The censusviz package facilitate the process of analyzing and visualizing historical census data through 
     3 primary features: (1) converting historical demographic data from IPUMS into an accessible format for analysis 
     and joining it with geospatial census tract data so that it is easy to visualize on a map, (2) visualize the distribution 
