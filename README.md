@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# censusviz
+# censusviz <img src="inst/hex-censusviz.png" align="right" height="139">
 
 <!-- badges: start -->
 
@@ -11,17 +11,20 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/censusviz)](https://CRAN.R-project.org/package=censusviz)
 <!-- badges: end -->
 
-<right>
+The [`censusviz`](https://github.com/rporta23/censusviz) package
+provides an interface for exploring and visualizing historical racial
+demographic census data (1950-2020) sourced from
+[IPUMS](https://data2.nhgis.org/main) for any region in the United
+States (by county). The package provides functionality for visualizing
+the data on leaflet maps as well as for accessing the data in an
+accessible, tidy format such that the user can then create their own
+visualizations.
 
-<img src="inst/hex-censusviz.png" height="139" />
-
-</right>
-
-The [`censusviz`](https://github.com/rporta23/censusviz) package allows
-users to explore and visualize historical racial demographic census data
-for any region in the United States using leaflet maps integrated into a
-shiny app. This will help facilitate with the process of using
-historical census data for analyzing and visualizing.
+Since the data is very large, it is hosted on GitHub and is not
+contained in the package itself. The package includes a few smaller
+samples of the data as examples. The raw data can be accessed
+[here](https://drive.google.com/drive/folders/1teqLHG8fnrZA-ts0u2qFcQ84Q6hgi6EI?usp=sharing).
+See the vignette for more details.
 
 This package was inspired by the `nepm` package. The nepm package was
 initially created as part of a
@@ -37,7 +40,7 @@ with [New England Public Media](https://www.nepm.org/).
 following function:
 
 ``` r
-remotes::install_github("rporta23/censusviz")
+#remotes::install_github("rporta23/censusviz")
 ```
 
 ``` r
@@ -73,18 +76,33 @@ base_map() %>%
 ## Example 2
 
 Create a line graph to show changes in demographics over time for Boston
-(Suffolk County), MA.
+(Suffolk County), MA. The sample of data to create this graph for Boston
+is included in the package. See the vignette for details on how to
+create this type of graph for any region.
 
 ``` r
-data_long <- get_data_long() %>%
-  filter_data_long("Massachusetts", "Suffolk")
+head(boston_data_long)
+#> # A tibble: 6 × 11
+#>   GISJOIN   STATE COUNTY variable     n num_people pct_people  year census_label
+#>   <chr>     <chr> <chr>  <chr>    <dbl>      <dbl>      <dbl> <dbl> <chr>       
+#> 1 G2500250… Mass… Suffo… DFB001    3550       3831    0.927    1980 White       
+#> 2 G2500250… Mass… Suffo… DFB002     188       3831    0.0491   1980 Black       
+#> 3 G2500250… Mass… Suffo… DFB003       8       3831    0.00209  1980 American In…
+#> 4 G2500250… Mass… Suffo… DFB004       0       3831    0        1980 American In…
+#> 5 G2500250… Mass… Suffo… DFB005       0       3831    0        1980 American In…
+#> 6 G2500250… Mass… Suffo… DFB006      10       3831    0.00261  1980 Asian and P…
+#> # … with 2 more variables: race_label <chr>, is_hispanic <lgl>
+```
 
-data_long_sum <- data_long %>%
+``` r
+# group by year and race_label and summarize to create dataframe for line graph
+data_long_sum <- boston_data_long %>%
   group_by(year, race_label) %>%
   summarize(total = sum(n))
 #> `summarise()` has grouped output by 'year'. You can override using the `.groups`
 #> argument.
 
+# create line graph to show change over time in demographics
 ggplot(data_long_sum, aes(x = year, y = total, color = race_label)) +
   geom_line() +
   labs(
@@ -95,7 +113,7 @@ ggplot(data_long_sum, aes(x = year, y = total, color = race_label)) +
   )
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
 ## Contributors
 

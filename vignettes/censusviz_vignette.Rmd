@@ -23,7 +23,7 @@ library(dplyr)
 
 ## About censusviz
 
-The [`censusviz`](https://github.com/rporta23/censusviz) package allows users to explore and visualize historical racial demographic census data for any region in the United States using leaflet maps integrated into a shiny app. This will help facilitate with the process of using historical census data for analyzing and visualizing. 
+The [`censusviz`](https://github.com/rporta23/censusviz) package provides an interface for exploring and visualizing historical racial demographic census data (1950-2020) sourced from [IPUMS](https://data2.nhgis.org/main) for any region in the United States (by county). The package provides functionality for visualizing the data on leaflet maps as well as for accessing the data in an accessible, tidy format such that the user can then create their own visualizations. 
 
 This package was inspired by the `nepm` package. 
 
