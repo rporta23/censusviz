@@ -37,8 +37,11 @@ filter_data_long <- function(data, state, county) {
   if(length(state) > 1) stop("invalid input, 'state' argument must be a single character string")
   if(length(county) > 1) stop("invalid input, 'county' argument must be a single character string")
   
-  data %>%
+data_check <- data %>%
     dplyr::filter(STATE == state, stringr::str_detect(COUNTY, county))
+
+if (nrow(data_check) == 0) warning("The data frame being returned has 0 rows. This may have occurred because of incorrect spelling of state or county arguments.")
+  data_check
 }
 
 #' @rdname get_data_long
@@ -61,4 +64,7 @@ filter_data_wide <- function(data, state, county) {
     dplyr::mutate(n = purrr::map_int(tract_data, nrow)) %>%
     dplyr::filter(n > 0) %>%
     dplyr::select(-n)
+  
+  if (nrow(tract_new) == 0) warning("The data frame being returned has 0 rows. This may have occurred because of incorrect spelling of state or county arguments.")
+    tract_new
 }
