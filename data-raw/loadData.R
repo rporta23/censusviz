@@ -27,7 +27,7 @@ sanfrancisco_sample <- data_wide %>%
 usethis::use_data(sanfrancisco_sample, overwrite = TRUE)
 
 # create the data_wide for Madison, New York
-madison_data_wide <- data_wide %>% 
+madison_data_wide <- data_wide %>%
   filter_data_wide("New York", "Madison")
 
 usethis::use_data(madison_data_wide, overwrite = TRUE)
@@ -37,4 +37,4 @@ boston_data_long <- get_data_long() %>%
   filter_data_long("Massachusetts", "Suffolk")
 
 usethis::use_data(boston_data_long, overwrite = TRUE)
-  
+

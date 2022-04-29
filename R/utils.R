@@ -10,14 +10,14 @@ last_census_year <- function(x) {
 }
 
 #' Color palette to be shared across maps
-#' @param palette Name of color palette passed to 
+#' @param palette Name of color palette passed to
 #' \code{\link[grDevices]{hcl.colors}}
 colorPeople <- function(palette = "Zissou 1") {
   # set race categories
   categories <- unique(censusviz::census_var_map$race_label)
   # set color palette
   leaflet::colorFactor(
-    grDevices::hcl.colors(n = length(categories), palette = palette), 
+    grDevices::hcl.colors(n = length(categories), palette = palette),
     categories
   )
 }

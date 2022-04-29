@@ -13,7 +13,7 @@
 
 #' US Census data for Boston, MA (Suffolk County)
 #' @docType data
-#' @description A pre-loaded dataset for the population of Boston, MA 
+#' @description A pre-loaded dataset for the population of Boston, MA
 #' @format A tibble with 58861 rows and 6 columns
 #' \describe{
 #'   \item{year}{Census year}
@@ -28,7 +28,7 @@
 
 #' US Census data for Manhattan, NY (Manhattan County)
 #' @docType data
-#' @description A pre-loaded dataset for the population of Manhattan, NY 
+#' @description A pre-loaded dataset for the population of Manhattan, NY
 #' @format A tibble with 128297 rows and 6 columns
 #' \describe{
 #'   \item{year}{Census year}
@@ -43,7 +43,7 @@
 
 #' US Census data for San Francisco, CA (San Francisco County)
 #' @docType data
-#' @description A pre-loaded dataset for the population of San Francisco, CA 
+#' @description A pre-loaded dataset for the population of San Francisco, CA
 #' @format A tibble with 60125 rows and 6 columns
 #' \describe{
 #'   \item{year}{Census year}
@@ -58,7 +58,7 @@
 
 #' US Census data for Madison, NY (Madison County) in wide format
 #' @docType data
-#' @description A dataset for the population of Madison, NY 
+#' @description A dataset for the population of Madison, NY
 #' @format A tibble with 7 rows and 2 columns
 #' \describe{
 #'   \item{year}{Census year}

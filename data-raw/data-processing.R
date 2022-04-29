@@ -14,8 +14,8 @@ safe_unzip <- function(zip) {
 
 demographics <- tibble(
   csv = fs::dir_ls(
-    here::here("data-large", "demographics"), 
-    regexp = "_[0-9]{4}_tract\\.csv$", 
+    here::here("data-large", "demographics"),
+    regexp = "_[0-9]{4}_tract\\.csv$",
     recurse = TRUE
   ),
   file = stringr::str_extract(csv, "_[0-9]{4}_tract\\.csv"),
@@ -29,7 +29,7 @@ fix_tracts <- function(x) {
 }
 
 fix_vars <- function(data) {
-  data %>% 
+  data %>%
     mutate(across(where(is.character) & starts_with("H7Z"), parse_integer))
 }
 
@@ -56,12 +56,12 @@ tract_demographics_long <- function(data) {
   vars <- census_var_map %>%
     filter(!is.na(race_label)) %>%
     pull(variable)
-  
+
   data %>%
     select(GISJOIN, any_of(vars), STATE, COUNTY) %>%
     tidyr::pivot_longer(cols = -c(GISJOIN, STATE, COUNTY), names_to = "variable", values_to = "n") %>%
-    filter(!is.na(n)) %>% 
-    mutate(n = as.numeric(n)) %>% 
+    filter(!is.na(n)) %>%
+    mutate(n = as.numeric(n)) %>%
     group_by(GISJOIN) %>%
     mutate(
       num_people = sum(n),
@@ -91,7 +91,7 @@ tracts <- tibble(
 gis <- tracts %>%
   pull(shp) %>%
   purrr::map(sf::st_read) %>%
-  purrr::map(sf::st_transform, 4326) 
+  purrr::map(sf::st_transform, 4326)
 
 tracts$tract_gis <- gis
 
@@ -110,8 +110,8 @@ tracts_demo_joined <- x %>%
 
 save(tracts_demo_joined, file = "tracts_demo_joined.rda")
 
-tracts_long_all <- tracts_demo_joined %>% 
-  select(tract_long) %>% 
-  unnest(cols = tract_long) %>% 
+tracts_long_all <- tracts_demo_joined %>%
+  select(tract_long) %>%
+  unnest(cols = tract_long) %>%
   unnest(cols = data)
 save(tracts_long_all, file = "tracts_long_all.rda")
