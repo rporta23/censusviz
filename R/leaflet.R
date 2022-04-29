@@ -24,6 +24,11 @@ add_people <- function(lmap, year_id, people_data) {
   if(!is.data.frame(people_data)) stop("invalid input, 'people_data' argument must have class data.frame")
   if(length(year_id) > 1) stop("invalid input, 'year_id' argument must have length 1")
   
+  minimum <- min(people_data$year)
+  maximum <- (max(people_data$year) + 9)
+  
+  if(year_id < minimum || year_id > maximum) warning("year_id is not within the range of the available data.")
+  
   data <- people_data %>%  
     dplyr::filter(year == last_census_year(year_id))
   
@@ -94,6 +99,11 @@ add_tracts <- function(lmap, year_id, tract_data) {
   # add tracts for the most recent Census year only
   bg <- tract_data %>% 
     dplyr::filter(year == last_census_year(year_id))
+  
+  minimum_tract <- min(tract_data$year)
+  maximum_tract <- (max(tract_data$year) + 9)
+  
+  if(year_id < minimum_tract || year_id > maximum_tract) warning("year_id is not within the range of the available data.")
   
   if (nrow(bg) > 0) { # put tracts on map if they exist
     

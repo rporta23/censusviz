@@ -52,7 +52,7 @@ create_dots <- function(data, num_people = 100) {
   sf::sf_use_s2(FALSE)
   
   suppressMessages(
-    data %>% 
+    data_check <- data %>% 
       dplyr::mutate(
         people = purrr::map(tract_data, sample_people_many, num_people = num_people)
       ) %>% 
@@ -61,4 +61,8 @@ create_dots <- function(data, num_people = 100) {
       dplyr::left_join(censusviz::census_var_map, by = c("year", "variable")) %>% 
       sf::st_as_sf()
   )
+  
+  if (nrow(data_check) == 0) warning("The data frame being returned has 0 rows. This may have occurred because the sampling size (num_people) is too large.")
+    data_check
+  
 }
