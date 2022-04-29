@@ -22,6 +22,7 @@ library(sf)
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/censusviz)](https://CRAN.R-project.org/package=censusviz)
+[![R-CMD-check](https://github.com/rporta23/censusviz/workflows/R-CMD-check/badge.svg)](https://github.com/rporta23/censusviz/actions)
 <!-- badges: end -->
 
 The [`censusviz`](https://github.com/rporta23/censusviz) package provides an interface for exploring and visualizing historical racial demographic census data (1950-2020) sourced from [IPUMS](https://data2.nhgis.org/main) for any region in the United States (by county). The package provides functionality for visualizing the data on leaflet maps as well as for accessing the data in an accessible, tidy format such that the user can then create their own visualizations. 

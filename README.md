@@ -9,6 +9,7 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/censusviz)](https://CRAN.R-project.org/package=censusviz)
+[![R-CMD-check](https://github.com/rporta23/censusviz/workflows/R-CMD-check/badge.svg)](https://github.com/rporta23/censusviz/actions)
 <!-- badges: end -->
 
 The [`censusviz`](https://github.com/rporta23/censusviz) package
@@ -99,8 +100,8 @@ head(boston_data_long)
 data_long_sum <- boston_data_long %>%
   group_by(year, race_label) %>%
   summarize(total = sum(n))
-#> `summarise()` has grouped output by 'year'. You can override using the `.groups`
-#> argument.
+#> `summarise()` has grouped output by 'year'. You can override using the
+#> `.groups` argument.
 
 # create line graph to show change over time in demographics
 ggplot(data_long_sum, aes(x = year, y = total, color = race_label)) +

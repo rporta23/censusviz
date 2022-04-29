@@ -60,11 +60,11 @@ filter_data_wide <- function(data, state, county) {
 
   tract_new <- data$tract %>%
     purrr::map(~ dplyr::filter(.x, STATE == state, stringr::str_detect(COUNTY, county)))
-  tibble::tibble(year = data$year, tract_data = tract_new) %>%
+  data_check <- tibble::tibble(year = data$year, tract_data = tract_new) %>%
     dplyr::mutate(n = purrr::map_int(tract_data, nrow)) %>%
     dplyr::filter(n > 0) %>%
     dplyr::select(-n)
 
-  if (nrow(tract_new) == 0) warning("The data frame being returned has 0 rows. This may have occurred because of incorrect spelling of state or county arguments.")
-  tract_new
+  if (nrow(data_check) == 0) warning("The data frame being returned has 0 rows. This may have occurred because of incorrect spelling of state or county arguments.")
+  data_check
 }
