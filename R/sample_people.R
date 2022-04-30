@@ -12,7 +12,7 @@ sample_people <- function(data, var_id, num_people = 1000) {
   x <- x %>%
     stats::na.omit() %>%
     as.numeric()
-  cat(paste("\nSampling variable:", var_id))
+  message(paste("\nSampling variable:", var_id))
   data %>%
     dplyr::filter(is_na == FALSE) %>%
     sf::st_sample(size = round(x / num_people), exact = TRUE, by_polygon = TRUE) %>%

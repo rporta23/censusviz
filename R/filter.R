@@ -1,5 +1,5 @@
 globalVariables(
-  c("STATE", "COUNTY", "tracts_long_all", "tracts_demo_joined1", "tracts_demo_joined2", "tract_data", "n")
+  c("STATE", "COUNTY", "tracts_long_all", "tracts_demo_joined1", "tracts_demo_joined2", "tract_data", "n", "tract_long")
 )
 
 #' Read in and filter demographic and census tract boundaries data from the U.S. census
@@ -19,7 +19,9 @@ get_data_wide <- function() {
   githubURL2 <- "https://github.com/CJParkNW/cenviz_data/raw/main/tracts_demo_joined2.rda"
   load(url(githubURL1))
   load(url(githubURL2))
-  invisible(rbind(tracts_demo_joined1, tracts_demo_joined2))
+  data_wide <- rbind(tracts_demo_joined1, tracts_demo_joined2) %>%
+    dplyr::select(-tract_long)
+  invisible(data_wide)
 }
 
 #' @rdname get_data_long

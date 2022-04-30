@@ -54,11 +54,6 @@ add_people <- function(lmap, year_id, people_data) {
     pal <- colorPeople() # generate color palette
 
     out <- lmap %>%
-      # adds dots representing spatial distribution of racial demographics
-      # each demographic group is a different color, and each dot represents 100 people
-      # note that the location of the dots are randomized within each census tract,
-      # so they do not represent precise locations of individuals, but they do capture the broader trends
-      # in the spatial distribution of demographic groups
       leaflet::addCircles(
         data = data,
         layerId = ~layerId,

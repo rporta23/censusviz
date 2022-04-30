@@ -1,6 +1,6 @@
 Package: censusviz
 Title: Framework to Visualize Historical Census Data
-Version: 0.0.0.9004
+Version: 0.0.0.9005
 Authors@R: c(
     person("Rose", "Porta", email = "rporta@smith.edu", role = c("aut", "cre")),
     person("Irene", "Foster", email = "ifoster25@smith.edu", role = c("aut")),
@@ -25,15 +25,15 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Depends: 
-    R (>= 2.10),
-    sf
+    R (>= 2.10)
 LazyData: true
 Imports:
+    sf,
     dplyr,
+    grDevices,
     htmlwidgets,
     leaflet,
     leafpop,
-    lubridate,
     lwgeom,
     purrr,
     stats,
