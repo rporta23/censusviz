@@ -63,7 +63,6 @@ filter_data_wide <- function(data, state, county) {
   tract_new <- data$tract %>%
     purrr::map(~ dplyr::filter(.x, STATE == state, stringr::str_detect(COUNTY, county)))
   data_check <- tibble::tibble(year = data$year, tract_data = tract_new) %>%
-    sf::st_as_sf() %>%
     dplyr::mutate(n = purrr::map_int(tract_data, nrow)) %>%
     dplyr::filter(n > 0) %>%
     dplyr::select(-n)
