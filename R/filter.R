@@ -47,6 +47,7 @@ filter_data_long <- function(data, state, county) {
 }
 
 #' @rdname get_data_long
+#' @import sf
 #' @export
 #' @examples
 #' \dontrun{
