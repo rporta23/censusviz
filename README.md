@@ -48,6 +48,39 @@ remotes::install_github("rporta23/censusviz")
 library(censusviz)
 ```
 
+## Included Datasets
+
+We have included 5 sample datasets to demonstrate the functionality of
+the package. These datasets consist of:
+
+-   Three sample datasets for users to immediately visualize the
+    demographic data for any census year 1950-2020 on a map:
+    -   `boston_sample`
+    -   `sanfrancisco_sample`
+    -   `manhattan sample`
+
+Users can visualize these datasets on a leaflet map using the
+`base_map()` and `add_people()` functions, as demonstrated in Example 1.
+
+-   One dataset to demonstrate the structure of the dataset returned by
+    the `get_data_wide()` function:
+    -   `madison_data_wide`
+
+This dataset can be used to visualize the census tract boundary lines
+for Madison County, NY on a leaflet map using the `base_map()` and
+`add_tracts()` functions, as demonstrated in the vignette.
+
+-   One dataset to demonstrate the structure of the dataset returned by
+    the `get_data_long()` function:
+    -   `boston_data_long`
+
+This dataset can be used for exploratory analysis of racial demographic
+data for Suffolk County, MA using `dplyr` and `ggplot2` functionality,
+as demonstrated in Example 2
+
+**See the vignette and full documentation for more information on how to
+access and visualize the data for any county in the U.S.**
+
 ## Example 1
 
 Visualize spatial distribution of racial demographics for any census
