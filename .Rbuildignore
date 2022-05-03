@@ -2,7 +2,12 @@
 ^\.Rproj\.user$
 ^data-large/
 ^data-raw/
+^inst/boston1.png$
+^inst/boston2.png$
+^inst/hex-censusviz.png$
 ^README\.Rmd$
+^README\.md$
 ^LICENSE\.md$
 ^cran-comments\.md$
 ^\.github$
+^\.Rhistory$

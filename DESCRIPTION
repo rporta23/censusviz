@@ -14,7 +14,7 @@ Description: The censusviz package facilitate the process of analyzing and visua
     allows users to interactively explore changes over time in demographics through leaflet maps and data tables. These three 
     elements will build off of each other such that the user can either simply access the data that they want and perform their own 
     analysis, or they can use the functionality of the package to visualize it spatially using individual maps or a shiny app.
-License: MIT
+License: MIT + file LICENSE
 Suggests: 
     knitr,
     rmarkdown,
