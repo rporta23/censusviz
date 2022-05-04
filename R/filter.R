@@ -30,8 +30,10 @@ get_data_wide <- function() {
 #' @param state A character string specifying the name of the desired state
 #' @param county A character string specifying the name of the desired county
 #' @examples
+#' \dontrun{
 #' filter_data_long(get_data_long(), "New York", "Madison")
 #' filter_data_long(get_data_long(), "Massachusetts", "Hampshire")
+#' }
 filter_data_long <- function(data, state, county) {
   if (!is.data.frame(data)) stop("invalid input, 'data' argument must have class data.frame")
   if (!is.character(state)) stop("invalid input, 'state' argument must have class character")
