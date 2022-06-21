@@ -26,8 +26,10 @@ filter_data_wide(data, state, county)
 Read in and filter demographic and census tract boundaries data from the U.S. census
 }
 \examples{
+\dontrun{
 filter_data_long(get_data_long(), "New York", "Madison")
 filter_data_long(get_data_long(), "Massachusetts", "Hampshire")
+}
 \dontrun{
 filter_data_wide(get_data_wide(), "New York", "Madison")
 filter_data_wide(get_data_wide(), "Massachusetts", "Hampshire")
