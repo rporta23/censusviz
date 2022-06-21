@@ -159,3 +159,7 @@ If you are interested in exploring U.S. census data, see related package
 -   [Irene Foster](https://github.com/i-m-foster)
 -   [Catherine Park](https://github.com/CJParkNW)
 -   [Rose Porta](https://github.com/rporta23)
+
+## Data Citation
+Data Sourced from IPUMS NHGIS:
+Steven Manson, Jonathan Schroeder, David Van Riper, and Steven Ruggles. IPUMS National Historical Geographic Information System: Version 16.0 [Database]. Minneapolis, MN: IPUMS. 2021. http://doi.org/10.18128/D050.V16.0
